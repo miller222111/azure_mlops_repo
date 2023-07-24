@@ -1,0 +1,11 @@
+name: Workflow triggered by pull request
+
+on: [pull_request]:
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Placeholder
+      run: |
+        echo "Will add code checks here in next challenge"
