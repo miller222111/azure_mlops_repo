@@ -1,6 +1,6 @@
 name: Workflow triggered by pull request
 
-on: [pull_request]:
+on: [pull_request]
 
 jobs:
   train:
