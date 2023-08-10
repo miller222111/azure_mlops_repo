@@ -1,0 +1,7 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: blue
+endpoint_name: my-endpoint
+model:
+  path: azureml:test:1
+instance_type: STANDARD_D4AS_V4
+instance_count: 1
