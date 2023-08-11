@@ -4,7 +4,7 @@ endpoint_name: my-endpoint
 model:
   name: test
   version: 1
-  path: azureml://locations/eastus2/workspaces/e9cd012e-53fc-44a1-95e0-88ae96c42a47/models/test/versions/1
+  path: azureml:test:1
   model_format: mlflow
 instance_type: STANDARD_D4AS_V4
 instance_count: 1
