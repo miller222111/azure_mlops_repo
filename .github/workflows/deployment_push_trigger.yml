@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
 jobs:
-  endpt_deploy:
+  endpt_create:
     runs-on: ubuntu-latest
     environment: prod
     needs: prod_train
@@ -19,5 +19,22 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Trigger Azure Machine Learning endpt_deploy job
-      run: 
-        az ml online-endpoint create -n src/deployment.yml --resource-group gwg_dev_ml --workspace-name gwg_dev_ws
+      run:
+        az ml online-endpoint create --name diabetes-mlflow -f src/create_endpt.yml
+
+  endpt_deploy:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: endpt_create
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Trigger Azure Machine Learning endpt_deploy job
+      run:
+        az ml online-deployment create --name mlflow-deployment --endpoint diabetes-mlflow -f src/deployment.yml --all-traffic
