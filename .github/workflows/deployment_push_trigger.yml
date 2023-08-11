@@ -24,7 +24,7 @@ jobs:
   endpt_deploy:
     runs-on: ubuntu-latest
     environment: prod
-    needs: endpt_create
+    # needs: endpt_create
     steps:
     - name: Check out repo
       uses: actions/checkout@main
