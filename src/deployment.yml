@@ -2,5 +2,5 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: mlflow-deployment
 endpoint_name: my-endpoint
 model: azureml:test:1
-instance_type: STANDARD_D4AS_V4
+instance_type: Standard_F2s_v2
 instance_count: 1
