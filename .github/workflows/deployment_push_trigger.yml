@@ -1,0 +1,23 @@
+name: On push to 'main' trigger an Azure Machine Learning endpt
+
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  endpt_deploy:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: prod_train
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Trigger Azure Machine Learning endpt_deploy job
+      run: 
+        az ml online-endpoint create -n src/deployment.yml --resource-group gwg_dev_ml --workspace-name gwg_dev_ws
