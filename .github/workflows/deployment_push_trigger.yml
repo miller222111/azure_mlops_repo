@@ -8,7 +8,6 @@ jobs:
   endpt_create:
     runs-on: ubuntu-latest
     environment: prod
-    needs: prod_train
     steps:
     - name: Check out repo
       uses: actions/checkout@main
