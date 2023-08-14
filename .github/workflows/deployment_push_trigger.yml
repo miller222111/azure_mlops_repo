@@ -36,4 +36,4 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Trigger Azure Machine Learning endpt_deploy job
       run:
-        az ml online-deployment create --name mlflow-deployment --endpoint diabetes-mlflow -f src/deployment.yml --all-traffic --resource-group gwg_dev_ml --workspace-name gwg_dev_ws
+        az ml online-deployment create --name mlflow-deploy --endpoint diabetes-mlflow -f src/deployment.yml --all-traffic --resource-group gwg_dev_ml --workspace-name gwg_dev_ws
